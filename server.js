@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // routing for control panel
-app.get("/", function (req, res) {
+app.get("/view", function (req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 
@@ -18,13 +18,15 @@ app.get("/add", function (req, res) {
 });
 
 //JSON links for table and table
-
 var table = {
-
+  name:,
+  email:,
+  phone:
+  uniqueId:
 }
 
 var waitlist = {
-  
+
 }
 app.post("/api/table", function (req, res) {
   // req.body hosts is equal to the JSON post sent from the user
