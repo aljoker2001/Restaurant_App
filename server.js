@@ -18,40 +18,8 @@ app.get("/add", function (req, res) {
 });
 
 //JSON links for table and table
-var table = {
-  name:,
-  email:,
-  phone:
-  uniqueId:
-}
-
-var waitlist = {
-
-}
-app.post("/api/table", function (req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var waitList = req.body;
-
-  console.log();
-
-  // We then add the json the user first 5 to be seated
-  characters.push();
-
-  // We then display the JSON to the users
-  res.json();
-});
-
-app.post("/api/waitlist", function (req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var waitList = req.body;
-
-  console.log();
-
-  // We then add the json the user sent to the waitlist array
-  characters.push();
-
-  // We then display the JSON to the users
-  res.json();
-});
+fetch("/api/current")
+  .then(response => response.json())
+  .then(data => {
+    let 
+  })
