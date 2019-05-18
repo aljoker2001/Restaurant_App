@@ -18,6 +18,14 @@ app.get("/add", function (req, res) {
 });
 
 //JSON links for table and table
+
+var table = {
+
+}
+
+var waitlist = {
+  
+}
 app.post("/api/table", function (req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
