@@ -1,9 +1,9 @@
 # Restaurant_App
 
 ## Static pages
-* [] Reservation page
-    * [] Alert when making reservation
-* [] View Tables page
+[✔️] Reservation page
+[✔️] Alert when making reservation
+[✔️] View Tables page
 
 ## Backend
 * [] server
@@ -15,5 +15,5 @@
 * [] clear table
     * [] empty variable with reservation data
     * [] Alert informing user the table is clearing
-* [] JSON link for Table link
-* [] JSON link for waitlist
+* [✔️] JSON link for Table link
+* [✔️] JSON link for waitlist
