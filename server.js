@@ -16,10 +16,3 @@ app.get("/view", function (req, res) {
 app.get("/add", function (req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
-
-//JSON links for table and table
-fetch("/api/current")
-  .then(response => response.json())
-  .then(data => {
-    let 
-  })
