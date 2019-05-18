@@ -26,12 +26,8 @@
   <section class="center mw7 hidden ba b--black-10">
     <h1 class="f4 bg-near-white br--top black-60 mv0 pv2 ph3">Current Reservations</h1>
     <div class="pa3 bt b--black-10">
-      <ul class="f6 f5-ns pl1 list lh-copy">
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
+      <ul id="reservations" class="f6 f5-ns pl1 list lh-copy">
+        <!-- <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li> -->
       </ul>
     </div>
   </section>
@@ -39,22 +35,40 @@
   <section class="center mw7 hidden bb br bl b--black-10">
     <h1 class="f4 bg-near-white br--top black-60 mv0 pv2 ph3">Waiting List</h1>
     <div class="pa3 bt b--black-10">
-      <ul class="f6 f5-ns pl1 list lh-copy">
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
+      <ul id="waitlist" class="f6 f5-ns pl1 list lh-copy">
+        <!-- <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li> -->
       </ul>
     </div>
   </section>
   <!-- Control Panel -->
   <section class="center mw7 hidden pv4 mb2">
     <p class="tc f6">
-      <a href="#" class="link blue">Clear Table</a> | <a href="#" class="link blue">API Table Link</a> | <a href="#"
-        class="link blue">API Wait List</a>
+      <a href="#" class="link blue">Clear Table</a> | <a href="/api/table" class="link blue">API Table Link</a> | <a
+        href="/api/waitlist" class="link blue">API Wait List</a>
     </p>
   </section>
+  <script>
+    fetch('/api/table', {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        let ul = document.querySelector('#reservations')
+        data.forEach(item => {
+          let li = document.createElement('li')
+          let span = document.createElement('span')
+          li.classList.add('mv4')
+          span.classList.add('br-pill', 'mr3', 'ph3', 'pv1', 'bg-blue', 'white')
+          span.innerText = item.uid
+          li.append(span)
+          li.append(item.name)
+          ul.append(li)
+        })
+      })
+  </script>
 </body>
 
 </html>

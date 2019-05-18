@@ -19,6 +19,19 @@ app.get('/add', function (req, res) {
   res.sendFile(path.join(__dirname, 'add.html'))
 })
 
+// API link to tables
+app.get('/api/table', (req, res) => {
+  let allReservations = req.body
+  allReservations.hasOwnProperty === true ? reservations.push(allReservations) : ""
+  res.json(reservations)
+})
+
+// API link to waitlist
+app.get('/api/waitlist', (req, res) => {
+  reservations = req.body;
+  res.json(reservations)
+})
+
 // POST to add 
 app.post('/api/reservations', (req, res) => {
   let newReservation = req.body
