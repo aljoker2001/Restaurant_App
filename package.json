@@ -1,0 +1,24 @@
+{
+  "name": "Restaurant_App",
+  "version": "1.0.0",
+  "description": "* [] Reservation page\r     * [] Alert when making reservation\r * [] View Tables page",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aljoker2001/Restaurant_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aljoker2001/Restaurant_App/issues"
+  },
+  "homepage": "https://github.com/aljoker2001/Restaurant_App#readme",
+  "dependencies": {
+    "express": "^4.17.0"
+  }
+}
