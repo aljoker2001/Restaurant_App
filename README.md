@@ -1,9 +1,9 @@
 # Restaurant_App
 
 ## Static pages
-[✔️] Reservation page
-[✔️] Alert when making reservation
-[✔️] View Tables page
+* [✔️] Reservation page
+    * [✔️] Alert when making reservation
+* [✔️] View Tables page
 
 ## Backend
 * [] server
