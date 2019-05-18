@@ -10,29 +10,29 @@
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
 </head>
 
-<body class="sans-serif">
+<body class="mh4 mt4 ma0-ns sans-serif">
   <!-- Header -->
-  <article class="mw7 center ph3 ph5-ns tc pv5 bg-light-gray off-black mb2">
+  <article class="mw7 center ph3 ph5-ns tc pv5 bg-light-gray off-black">
     <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
       🔥 Hot Restaurant 🔥
     </h1>
     <div>
-      <a class="f6 br-pill bg-blue no-underline white grow pv2 ph3 dib mr3" href="#">
+      <a class="f6 br-pill bg-blue no-underline white grow pv2 ph3 dib mr3" href="/">
         View Reservations
       </a>
     </div>
   </article>
   <!-- Reservation Form -->
   </article>
-  <section class="center mw7 hidden ba b--black-10 mb2">
+  <section class="center mw7 hidden ba b--black-10">
     <h1 class="f4 bg-near-white br--top black-60 mv0 pv2 ph3">Make Reservations</h1>
     <div class="pa3 bt b--black-10">
-      <main class="pa4 black-80">
-        <form class="center">
+      <main class="black-80">
+        <form class="center" method="POST">
           <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
             <div class="mt3">
               <label class="db fw6 lh-copy f6" for="guest-name">Name</label>
-              <input class="pa2 input-reset ba bg-transparent w-100" type="email" name="guest-name" id="guest-name">
+              <input class="pa2 input-reset ba bg-transparent w-100" type="text" name="guest-name" id="guest-name">
             </div>
             <div class="mt3">
               <label class="db fw6 lh-copy f6" for="email-address">Email</label>
@@ -41,14 +41,15 @@
             </div>
             <div class="mt3">
               <label class="db fw6 lh-copy f6" for="phone-number">Phone</label>
-              <input class="pa2 input-reset ba bg-transparent w-100" type="email" name="phone-number" id="phone-number">
+              <input class="pa2 input-reset ba bg-transparent w-100" type="text" name="phone-number" id="phone-number">
             </div>
             <div class="mt3">
               <label class="db fw6 lh-copy f6" for="unique-id">Unique ID</label>
-              <input class="pa2 input-reset ba bg-transparent w-100" type="email" name="unique-id" id="unique-id">
+              <input class="pa2 input-reset ba bg-transparent w-100" type="text" name="unique-id" id="unique-id">
             </div>
             <div class="mt3">
-              <input class="pointer ba bw0 f6 br-pill bg-blue no-underline white grow pv2 ph3 dib mr3 input-reset"
+              <input id="btn-add"
+                class="pointer ba bw0 f6 br-pill bg-blue no-underline white grow pv2 ph3 dib mr3 input-reset"
                 type="submit" value="Add">
             </div>
         </form>
@@ -56,23 +57,25 @@
     </div>
   </section>
   <!-- Control Panel -->
-  <section class="center mw7 hidden pv4 mb2">
-    <nav>
-      <a href="#" class="link">Clear Table</a> | <a href="#" class="link">API Table Link</a> | <a href="#"
-        class="link">API Wait List</a>
-    </nav>
+  <section class="center mw7 hidden pv4">
+    <p class="tc f6">
+      <a href="#" class="link blue">Clear Table</a> | <a href="/api/table" class="link blue">API Table Link</a> | <a href="/api/waitlist" class="link blue">API Wait List</a>
+    </p>
   </section>
 
   <script>
+    document.querySelector('form').addEventListener('submit', (event) => {
+      event.preventDefault()
+    })
     document.querySelector('#btn-add').addEventListener('click', (event) => {
       event.preventDefault()
       let newReservation = {
         name: document.querySelector('#guest-name').value.trim(),
         email: document.querySelector('#email-address').value.trim(),
         phone: document.querySelector('#phone-number').value.trim(),
-        uid: document.querySelector('#uniqe-id').value.trim()
+        uid: document.querySelector('#unique-id').value.trim()
       }
-      fetch('/api/add', {
+      fetch('/api/reservations', {
         method: 'post',
         body: JSON.stringify(newReservation),
         headers: {
@@ -83,6 +86,7 @@
         .then(data => {
           console.log('add.html', data)
           alert('Adding Guest...')
+          document.querySelector('form').reset()
         })
 
         let waitlist = {
