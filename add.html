@@ -88,25 +88,24 @@
           alert('Adding Guest...')
           document.querySelector('form').reset()
         })
-
-        let waitlist = {
-            name: document.querySelector('#guest-name').value.trim(),
-            email: document.querySelector('#email-address').value.trim(),
-            phone: document.querySelector('#phone-number').value.trim(),
-            uid: document.querySelector('#uniqe-id').value.trim()
-        }
-        fetch('api/waitlist', {
-            method: 'post',
-            body: JSON.stringify(waitlist),
-            headers: {
-            'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-        console.log('add2.html', data)
-        alert('showing waitlist...')
-        })
+        // let waitlist = {
+        //     name: document.querySelector('#guest-name').value.trim(),
+        //     email: document.querySelector('#email-address').value.trim(),
+        //     phone: document.querySelector('#phone-number').value.trim(),
+        //     uid: document.querySelector('#uniqe-id').value.trim()
+        // }
+        // fetch('api/waitlist', {
+        //     method: 'post',
+        //     body: JSON.stringify(waitlist),
+        //     headers: {
+        //     'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        // console.log('add2.html', data)
+        // alert('showing waitlist...')
+        // })
     })
   </script>
 </body>
