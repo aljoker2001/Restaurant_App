@@ -1,57 +1,33 @@
-require("dotenv").config();
-var express = require('express');
+const express = require('express')
+const app = express()
+const path = require('path')
+const PORT = process.env.PORT || 3000
 
-var app = express()
-var PORT = process.env.PORT || 3000;
+let reservations = []
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-// routing for control panel
-app.get("/view", function (req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
-});
+// Routing for default page
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'view.html'))
+})
 
-app.get("/add", function (req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
-});
+// Routing for add
+app.get('/add', function (req, res) {
+  res.sendFile(path.join(__dirname, 'add.html'))
+})
 
-//JSON links for table and table
-var table = {
-  name:,
-  email:,
-  phone:
-  uniqueId:
-}
+// POST to add 
+app.post('/api/reservations', (req, res) => {
+  let newReservation = req.body
+  reservations.push(newReservation)
+  res.json(reservations)
+})
 
-var waitlist = {
-
-}
-app.post("/api/table", function (req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var waitList = req.body;
-
-  console.log();
-
-  // We then add the json the user first 5 to be seated
-  characters.push();
-
-  // We then display the JSON to the users
-  res.json();
-});
-
-app.post("/api/waitlist", function (req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var waitList = req.body;
-
-  console.log();
-
-  // We then add the json the user sent to the waitlist array
-  characters.push();
-
-  // We then display the JSON to the users
-  res.json();
-});
+// Start express Server
+app.listen(PORT, error => {
+  if (error) throw error
+  console.log(`App listening on ${PORT}`)
+})
