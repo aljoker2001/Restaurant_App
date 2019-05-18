@@ -17,19 +17,19 @@ app.get("/add", function (req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
 
-//JSON links for table and waitlist
+//JSON links for table and table
 app.post("/api/table", function (req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   var waitList = req.body;
 
-  console.log(newcharacter);
+  console.log();
 
-  // We then add the json the user sent to the character array
-  characters.push(newcharacter);
+  // We then add the json the user first 5 to be seated
+  characters.push();
 
   // We then display the JSON to the users
-  res.json(newcharacter);
+  res.json();
 });
 
 app.post("/api/waitlist", function (req, res) {
@@ -37,11 +37,11 @@ app.post("/api/waitlist", function (req, res) {
   // This works because of our body parsing middleware
   var waitList = req.body;
 
-  console.log(newcharacter);
+  console.log();
 
-  // We then add the json the user sent to the character array
-  characters.push(newcharacter);
+  // We then add the json the user sent to the waitlist array
+  characters.push();
 
   // We then display the JSON to the users
-  res.json(newcharacter);
+  res.json();
 });
