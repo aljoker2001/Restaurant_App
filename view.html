@@ -17,7 +17,7 @@
       🔥 Hot Restaurant 🔥
     </h1>
     <div>
-      <a class="f6 br-pill bg-blue no-underline white grow pv2 ph3 dib mr3" href="#">
+      <a class="f6 br-pill bg-blue no-underline white grow pv2 ph3 dib mr3" href="/add">
         Make Reservation
       </a>
     </div>
@@ -26,12 +26,7 @@
   <section class="center mw7 hidden ba b--black-10 mb2">
     <h1 class="f4 bg-near-white br--top black-60 mv0 pv2 ph3">Current Reservations</h1>
     <div class="pa3 bt b--black-10">
-      <ul class="f6 f5-ns ml0 list lh-copy">
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
+      <ul id="reservationSection" class="f6 f5-ns ml0 list lh-copy">
       </ul>
     </div>
   </section>
@@ -39,12 +34,7 @@
   <section class="center mw7 hidden ba b--black-10 mb2">
     <h1 class="f4 bg-near-white br--top black-60 mv0 pv2 ph3">Waiting List</h1>
     <div class="pa3 bt b--black-10">
-      <ul class="f6 f5-ns ml0 list lh-copy">
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
-        <li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">1</span> Name</li>
+      <ul id="waitlistSection" class="f6 f5-ns ml0 list lh-copy">
       </ul>
     </div>
   </section>
@@ -55,6 +45,27 @@
         class="link">API Wait List</a>
     </nav>
   </section>
+  <script>
+    fetch("/api/add")
+    .then(response => response.json())
+    .then(data => {
+      let reservations = document.querySelector("#reservationSection");
+      let count = 1;
+      let waitlist = document.querySelector("#waitlistSection");
+      let count2 = 1;
+      for (let res of data) {
+        if (count < 6) {
+          console.log(res);
+          reservations.insertAdjacentHTML("beforeend", `<li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">${count}</span> ${res.name}</li>`);
+          count++;
+        } else {
+          console.log(res);
+          waitlist.insertAdjacentHTML("beforeend", `<li class="mv4"><span class="br-pill mr3 ph3 pv1 bg-blue white">${count2}</span> ${res.name}</li>`);
+          count2++
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>
